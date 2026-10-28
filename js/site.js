@@ -4,7 +4,10 @@ const SETTINGS = {
   phone: '+91 9625561969',
   whatsapp: '+91 9625561969',          // digits only with country code, e.g. 919876543210
   scriptUrl: 'https://script.google.com/macros/s/AKfycbxReSCrGVJII35OOU77Hkapn5pAHLq3N_h8NfnJVm_6AsfAy4qnqYNDw88b-B2Njbiufw/exec',      // paste your free Web3Forms access key here
-  social: []             // e.g. [{name:'LinkedIn', url:'https://...'}]
+  social: [
+     {name:'Instagram', url:'https://www.instagram.com/infraadesk/'},
+     {name:'Facebook', url:'https://www.facebook.com/profile.php?id=61595440933256'}
+   ]             // e.g. [{name:'LinkedIn', url:'https://...'}]
 };
 const HOME_SERVICES = ['Design and Drawings','Detailed Cost Estimates','Site Visits and Quality Review','Material Consultation','Budget Planning'];
 const CONTR_SERVICES = ['Design and Drawing Support','RA Bill Preparation and Compliance Support','BOQ Preparation','Quantity Estimation','Rate Analysis','Contractor Profile Enhancement'];
