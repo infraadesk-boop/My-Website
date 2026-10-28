@@ -3,7 +3,7 @@ const SETTINGS = {
   email: 'YOUR-EMAIL@infradesk.in',
   phone: '+91 XXXXX XXXXX',
   whatsapp: '',          // digits only with country code, e.g. 919876543210
-  web3formsKey: '',      // paste your free Web3Forms access key here
+  scriptUrl: 'https://script.google.com/macros/s/AKfycbxReSCrGVJII35OOU77Hkapn5pAHLq3N_h8NfnJVm_6AsfAy4qnqYNDw88b-B2Njbiufw/exec',      // paste your free Web3Forms access key here
   social: []             // e.g. [{name:'LinkedIn', url:'https://...'}]
 };
 const HOME_SERVICES = ['Design and Drawings','Detailed Cost Estimates','Site Visits and Quality Review','Material Consultation','Budget Planning'];
@@ -64,12 +64,12 @@ ${services.map((s,i) => `<label class="chk"><input type="checkbox" name="svc" va
     if (!/^[+0-9\s-]{10,15}$/.test(f.phone.value.trim())) return say('Enter a valid phone number (10 to 15 digits).');
     if (!form.querySelector('[name=svc]:checked')) return say('Select at least one service.');
     if (!form.checkValidity()) { form.reportValidity(); return say('Please fill the required fields.'); }
-    if (!SETTINGS.web3formsKey) return say('This form is not connected yet. Please contact us by email or phone.');
-    const data = { access_key: SETTINGS.web3formsKey, subject: 'New ' + type + ' enquiry - InfraDesk', from_name: 'InfraDesk website', enquiry_type: type,
+    if (!SETTINGS.scriptUrl) return say('This form is not connected yet. Please contact us by email or phone.');
+    const data = { botcheck: '', subject: 'New ' + type + ' enquiry - InfraDesk', from_name: 'InfraDesk website', enquiry_type: type,
       name: f.name.value, phone: f.phone.value, email: f.email.value, location: f.location.value, services: [...form.querySelectorAll('[name=svc]:checked')].map(c => c.value).join(', '),
       stage: f.stage.value, deadline: f.deadline.value, details: f.details.value };
     try {
-      const r = await fetch('https://api.web3forms.com/submit', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
+      const r = await fetch(SETTINGS.scriptUrl, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(data) })
       if (!(await r.json()).success) throw 0;
       form.reset(); say('Thank you. Your enquiry has been sent. We will contact you soon.', true);
     } catch { say('Sorry, your enquiry could not be sent. Please email or call us.'); }
