@@ -35,7 +35,7 @@ if (footerEl) footerEl.innerHTML = `
 <div><h3>Services</h3><ul><li><a href="homeowners.html">For Homeowners</a></li><li><a href="contractors.html">For Contractors</a></li><li><a href="how-it-works.html">How It Works</a></li></ul></div>
 <div><h3>Company</h3><ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms and Conditions</a></li></ul></div>
 <div><h3>Contact</h3><ul class="contact-list"><li>Email: <a href="mailto:${SETTINGS.email}">${SETTINGS.email}</a></li><li>Phone: ${SETTINGS.phone}</li>
-${SETTINGS.social.map(s => `<li><a href="${s.url}" rel="noopener">${s.name}</a></li>`).join('')}</ul></div>
+${SETTINGS.social.map(s => `<li><a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.name}</a></li>`).join('')}</ul></div>
 </div><div class="copy"><span>&copy; ${new Date().getFullYear()} InfraDesk Construction Solutions. All rights reserved.</span><span>infradesk.in</span></div></div></footer>`;
 
 /* ===== MOBILE MENU ===== */
